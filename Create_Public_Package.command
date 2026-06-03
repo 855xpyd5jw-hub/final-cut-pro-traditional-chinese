@@ -20,11 +20,14 @@ print_line "------------------------------------"
 
 /bin/rm -rf "$PACKAGE_DIR" "$ZIP_PATH"
 /bin/mkdir -p "$PACKAGE_DIR/scripts"
+/bin/mkdir -p "$PACKAGE_DIR/assets"
 
 /bin/cp "$SCRIPT_DIR/FinalCut_Pro_TC_OneClick.command" "$PACKAGE_DIR/"
 /bin/cp "$SCRIPT_DIR/Install_FinalCut_Pro_TC.command" "$PACKAGE_DIR/"
 /bin/cp "$SCRIPT_DIR/Uninstall_FinalCut_Pro_TC.command" "$PACKAGE_DIR/"
 /bin/cp "$SCRIPT_DIR/README.md" "$PACKAGE_DIR/"
+/bin/cp "$SCRIPT_DIR/LICENSE" "$PACKAGE_DIR/"
+/bin/cp "$SCRIPT_DIR/assets/final-cut-pro-tc-preview.png" "$PACKAGE_DIR/assets/"
 /bin/cp "$SCRIPT_DIR/scripts/localize_zh_tw.py" "$PACKAGE_DIR/scripts/"
 /bin/cp "$SCRIPT_DIR/scripts/build_app_localizations.py" "$PACKAGE_DIR/scripts/"
 

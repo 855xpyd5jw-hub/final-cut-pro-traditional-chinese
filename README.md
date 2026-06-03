@@ -32,7 +32,7 @@ FinalCut_Pro_TC_OneClick.command
 
 ### 如果你只是想安裝繁體中文化
 
-1. 到 GitHub 專案頁面的 `Releases` 下載最新的公開 zip。
+1. 下載 [`FinalCut_Pro_TC_Public.zip`](downloads/FinalCut_Pro_TC_Public.zip)。
 2. 解壓縮 zip。
 3. 確認 Final Cut Pro 已經完全關閉。
 4. 雙擊 `FinalCut_Pro_TC_OneClick.command`。
@@ -55,7 +55,7 @@ Create_Public_Package.command
 release/FinalCut_Pro_TC_Public.zip
 ```
 
-把這個 zip 上傳到 GitHub Releases，讓使用者下載即可。
+把這個 zip 複製到 `downloads/FinalCut_Pro_TC_Public.zip`，或上傳到 GitHub Releases，讓使用者下載即可。
 
 公開 zip 只會包含：
 

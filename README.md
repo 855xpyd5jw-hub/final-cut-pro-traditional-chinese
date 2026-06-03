@@ -1,5 +1,7 @@
 # Final Cut Pro 繁體中文化
 
+Language: **繁體中文** | [English](README.en.md)
+
 這個專案以官方 `zh_CN.lproj` 為來源，產生可放回 Final Cut Pro 的 `zh_TW.lproj`。
 
 本工具不是 Apple 官方產品，不包含 Final Cut Pro 原廠語系檔；所有語系內容皆由使用者本機已安裝的 Final Cut Pro 產生。

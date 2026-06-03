@@ -4,6 +4,10 @@
 
 本工具不是 Apple 官方產品，不包含 Final Cut Pro 原廠語系檔；所有語系內容皆由使用者本機已安裝的 Final Cut Pro 產生。
 
+## 畫面預覽
+
+![Final Cut Pro 繁體中文化畫面](assets/final-cut-pro-tc-preview.png)
+
 ## 一般使用者
 
 雙擊：

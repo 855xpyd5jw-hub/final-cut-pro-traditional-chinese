@@ -28,21 +28,36 @@ FinalCut_Pro_TC_OneClick.command
 
 ## 公開分享
 
-建議公開分享「轉換工具」，不要直接分享已產生的 `zh_TW.lproj` 或 `dist` payload，因為那些檔案含有 Final Cut Pro 原廠語系內容。
+這個專案適合分享「一鍵轉換工具」，不要分享已經產生好的 `zh_TW.lproj`。原因是產生後的語系檔會包含 Final Cut Pro 原本的文字內容；公開工具本身比較乾淨，也比較適合不同版本的 Final Cut Pro。
 
-建立公開 zip：
+### 如果你只是想安裝繁體中文化
+
+1. 到 GitHub 專案頁面的 `Releases` 下載最新的公開 zip。
+2. 解壓縮 zip。
+3. 確認 Final Cut Pro 已經完全關閉。
+4. 雙擊 `FinalCut_Pro_TC_OneClick.command`。
+5. 依照畫面提示輸入 Mac 登入密碼，等待工具完成。
+6. 重新打開 Final Cut Pro。
+
+如果 macOS 阻擋執行，請在檔案上按右鍵，選擇「打開」，再按一次「打開」。如果安裝時出現 `Operation not permitted`，請到「系統設定」->「隱私權與安全性」->「完整磁碟存取權」，允許 Terminal 存取。
+
+### 如果你是專案維護者，要產生分享用 zip
+
+雙擊：
 
 ```text
 Create_Public_Package.command
 ```
 
-產生的檔案會在：
+工具會建立：
 
 ```text
 release/FinalCut_Pro_TC_Public.zip
 ```
 
-這個 zip 只包含：
+把這個 zip 上傳到 GitHub Releases，讓使用者下載即可。
+
+公開 zip 只會包含：
 
 - `FinalCut_Pro_TC_OneClick.command`
 - `Install_FinalCut_Pro_TC.command`
@@ -51,7 +66,7 @@ release/FinalCut_Pro_TC_Public.zip
 - `scripts/build_app_localizations.py`
 - `README.md`
 
-不會包含 `zh_CN.lproj`、`zh_TW.lproj`、`dist` 或任何已轉換完成的 Apple 語系檔。
+它不會包含 `zh_CN.lproj`、`zh_TW.lproj`、`dist` 或任何已轉換完成的 Apple 語系檔。
 
 ## 開發使用方式
 

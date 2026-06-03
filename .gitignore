@@ -1,0 +1,17 @@
+.DS_Store
+
+# Generated Apple localization payloads. Do not publish these.
+zh_CN.lproj/
+zh_TW.lproj/
+dist/
+release/
+reports/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local/editor files
+.vscode/
+.idea/
+*.swp

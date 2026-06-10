@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final Cut Pro 繁體中文化</title>
+  <meta name="description" content="Final Cut Pro 繁體中文化工具與語言資源，提供安裝、備份、還原與版本說明。">
+  <meta property="og:title" content="Final Cut Pro 繁體中文化">
+  <meta property="og:description" content="讓 Final Cut Pro 介面更貼近繁體中文使用者的剪輯工作流程。">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M18 16h19c6 0 10 4 10 10 0 4-2 7-5 8 4 1 7 5 7 10 0 7-5 11-12 11H18V16zm11 9v6h7c2 0 4-1 4-3s-2-3-4-3h-7zm0 15v6h8c3 0 5-1 5-3s-2-3-5-3h-8z' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --accent: #2563eb;
+      --accent-deep: #1e3a8a;
+      --accent-soft: #dbeafe;
+      --accent-warm: #f97316;
+      --ink: #182033;
+      --muted: #647084;
+      --line: #e4e8f0;
+      --paper: #f7f9fc;
+      --card: #ffffff;
+      --band: #eef5ff;
+      --shadow: 0 16px 44px rgba(33, 54, 96, .10);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 18px;
+      top: -60px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: #fff;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus {
+      top: 14px;
+    }
+
+    .grad {
+      background: linear-gradient(120deg, var(--accent), var(--accent-warm));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(228, 232, 240, .88);
+      background: rgba(247, 249, 252, .82);
+      backdrop-filter: saturate(1.35) blur(12px);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 820;
+      letter-spacing: 0;
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 10px 22px rgba(37, 99, 235, .22);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      transition: color .18s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--ink);
+      outline: none;
+    }
+
+    .hero {
+      padding: 68px 0 44px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .78fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      color: var(--accent-deep);
+      font-size: 14px;
+      font-weight: 760;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent-warm);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      text-wrap: pretty;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 0 18px;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.04;
+      letter-spacing: 0;
+      font-weight: 880;
+    }
+
+    .tag {
+      max-width: 650px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: clamp(17px, 2.2vw, 21px);
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(33, 54, 96, .07);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      gap: 10px;
+      padding: 13px 24px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      font-size: 16px;
+      font-weight: 760;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, .25);
+      outline-offset: 3px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(.99);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 14px 30px rgba(37, 99, 235, .24);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(33, 54, 96, .08);
+    }
+
+    .meta {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .book-stage {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+
+    .book-stage::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, rgba(249, 115, 22, .24), transparent 34%),
+                  radial-gradient(circle at 62% 62%, rgba(37, 99, 235, .25), transparent 42%),
+                  #edf4ff;
+      filter: blur(2px);
+    }
+
+    .book-cover {
+      position: relative;
+      width: min(360px, 82vw);
+      aspect-ratio: 7 / 9.4;
+      padding: 30px;
+      border-radius: 22px 14px 14px 22px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, .18), transparent 10%),
+        linear-gradient(145deg, #0f2860 0%, #2563eb 48%, #f97316 118%);
+      box-shadow: 0 28px 70px rgba(24, 32, 51, .28);
+      transform: rotate(-3deg);
+    }
+
+    .book-cover::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 15px 9px 9px 15px;
+    }
+
+    .book-cover::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -80px;
+      width: 230px;
+      height: 230px;
+      border: 34px solid rgba(255, 255, 255, .16);
+      border-radius: 50%;
+    }
+
+    .cover-kicker,
+    .cover-title,
+    .cover-foot {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-kicker {
+      font-size: 13px;
+      font-weight: 760;
+      opacity: .84;
+    }
+
+    .cover-title {
+      margin-top: 86px;
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.02;
+      font-weight: 880;
+    }
+
+    .cover-foot {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      max-width: 230px;
+      font-size: 14px;
+      opacity: .86;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 4vw, 36px);
+      line-height: 1.18;
+      font-weight: 840;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .feature {
+      padding: 25px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(33, 54, 96, .13);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 840;
+    }
+
+    .feature h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .preview {
+      overflow: hidden;
+    }
+
+    .preview-art {
+      min-height: 250px;
+      padding: 22px;
+      background: linear-gradient(145deg, #0f172a, #1d4ed8);
+      color: #fff;
+    }
+
+    .preview-shot {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #101827;
+    }
+
+    .browser-bar {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 28px;
+    }
+
+    .browser-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .44);
+    }
+
+    .mock-line {
+      height: 12px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .24);
+    }
+
+    .mock-line.short {
+      width: 56%;
+    }
+
+    .mock-line.mid {
+      width: 78%;
+    }
+
+    .mock-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .mock-panel span {
+      min-height: 76px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .18);
+    }
+
+    .preview:nth-child(2) .preview-art {
+      background: linear-gradient(145deg, #172554, #f97316);
+    }
+
+    .preview:nth-child(3) .preview-art {
+      background: linear-gradient(145deg, #1e293b, #2563eb 72%, #93c5fd);
+    }
+
+    .preview:nth-child(4) .preview-art {
+      background: linear-gradient(145deg, #0f172a, #334155);
+    }
+
+    .caption {
+      padding: 14px 18px 16px;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .caption b {
+      color: var(--ink);
+    }
+
+    .download {
+      padding: 42px 26px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(249, 115, 22, .16), transparent 24%),
+        radial-gradient(circle at 90% 18%, rgba(37, 99, 235, .16), transparent 26%),
+        var(--band);
+      text-align: center;
+    }
+
+    .download .sub {
+      max-width: 560px;
+      margin: 0 auto 22px;
+    }
+
+    .steps {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(33, 54, 96, .07);
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .trust-card {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 25px;
+    }
+
+    .trust-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .trust-card p + p {
+      margin-top: 12px;
+    }
+
+    code {
+      padding: 2px 7px;
+      border-radius: 7px;
+      background: #eef2f7;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .92em;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid,
+      .feature-grid,
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .book-stage {
+        min-height: 410px;
+      }
+
+      .book-stage::before {
+        width: 430px;
+        height: 430px;
+      }
+
+      .nav-links .hide-sm {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 30px, 1120px);
+      }
+
+      nav .wrap {
+        min-height: 58px;
+      }
+
+      .brand span:last-child {
+        max-width: 136px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 42px 0 34px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 13vw, 52px);
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .book-cover {
+        width: min(310px, 84vw);
+      }
+
+      .cover-title {
+        margin-top: 64px;
+      }
+
+      section {
+        padding: 46px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">跳到主要內容</a>
+
+  <nav aria-label="主要導覽">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="logo">B</span>
+        <span>FCP 中文化</span>
+      </a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#features">特色</a>
+        <a class="hide-sm" href="#previews">畫面</a>
+        <a href="#download">下載</a>
+        <a href="https://github.com/855xpyd5jw-hub/final-cut-pro-traditional-chinese" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+  <main id="content">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Final Cut Pro localization</div>
+          <h1>Final Cut Pro <span class="grad">繁體中文化</span>工具</h1>
+          <p class="tag">把常用剪輯介面、選單與提示文字整理成更熟悉的繁體中文。適合希望降低學習門檻、加快剪輯流程的 macOS 使用者。</p>
+
+          <div class="pills" aria-label="網站特色">
+            <span class="pill">繁體中文介面</span>
+            <span class="pill">安裝前備份</span>
+            <span class="pill">可還原原始檔</span>
+            <span class="pill">公開專案頁</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn btn-primary" href="#download">下載中文化</a>
+            <a class="btn btn-ghost" href="#start">查看安裝步驟</a>
+          </div>
+          <div class="meta">macOS · Final Cut Pro · 繁體中文語言資源</div>
+        </div>
+
+        <figure class="book-stage" aria-label="Final Cut Pro 繁體中文化示意">
+          <div class="book-cover">
+            <div class="cover-kicker">FINAL CUT PRO / ZH-HANT</div>
+            <div class="cover-title">FCP<br>中文化</div>
+            <div class="cover-foot">Traditional Chinese resources for a smoother editing workflow.</div>
+          </div>
+        </figure>
+      </div>
+    </header>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>為什麼需要中文化</h2>
+          <p class="sub">讓剪輯工作不被英文術語打斷，常用功能一眼就能找到。</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card feature">
+            <div class="icon">01</div>
+            <h3>繁體中文選單</h3>
+            <p>把常見選單、面板與操作提示整理成繁體中文，剪片時不用一直猜英文功能名。</p>
+          </article>
+          <article class="card feature">
+            <div class="icon">02</div>
+            <h3>降低學習門檻</h3>
+            <p>對剛開始使用 Final Cut Pro 的使用者更友善，也方便教學、截圖與課程說明。</p>
+          </article>
+          <article class="card feature">
+            <div class="icon">03</div>
+            <h3>備份與還原</h3>
+            <p>安裝前先備份原始語言檔，日後更新 Final Cut Pro 或想恢復英文介面時可還原。</p>
+          </article>
+          <article class="card feature">
+            <div class="icon">04</div>
+            <h3>貼近剪輯流程</h3>
+            <p>翻譯以實際剪輯情境為主，避免生硬直譯，讓時間軸、效果、匯出等功能更容易辨識。</p>
+          </article>
+          <article class="card feature">
+            <div class="icon">05</div>
+            <h3>公開維護</h3>
+            <p>專案放在 GitHub 上公開追蹤，使用者能查看更新紀錄、回報錯字或提出修正。</p>
+          </article>
+          <article class="card feature">
+            <div class="icon">06</div>
+            <h3>輕量發布</h3>
+            <p>公開 zip 只包含一鍵工具、安裝/移除腳本與轉換程式，不直接散布已產生的 Apple 語系檔。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="previews">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>中文化內容</h2>
+          <p class="sub">可在這裡放實際截圖、翻譯前後比較與版本支援狀態。</p>
+        </div>
+
+        <div class="preview-grid">
+          <article class="card preview">
+            <img class="preview-shot" src="https://raw.githubusercontent.com/855xpyd5jw-hub/final-cut-pro-traditional-chinese/main/assets/final-cut-pro-tc-preview.png" alt="Final Cut Pro 繁體中文化畫面預覽">
+            <div class="caption"><b>實際預覽</b> - README 中的 Final Cut Pro 繁體中文化畫面。</div>
+          </article>
+
+          <article class="card preview">
+            <div class="preview-art">
+              <div class="browser-bar"><span></span><span></span><span></span></div>
+              <div class="mock-panel"><span></span><span></span></div>
+              <div class="mock-line"></div>
+              <div class="mock-line short"></div>
+            </div>
+            <div class="caption"><b>效果與工具</b> - 效果、轉場、檢視器與時間軸相關文字統一整理。</div>
+          </article>
+
+          <article class="card preview">
+            <div class="preview-art">
+              <div class="browser-bar"><span></span><span></span><span></span></div>
+              <div class="mock-line short"></div>
+              <div class="mock-panel"><span></span><span></span></div>
+              <div class="mock-line mid"></div>
+            </div>
+            <div class="caption"><b>備份流程</b> - 安裝前保留原始檔案，避免更新或測試時難以復原。</div>
+          </article>
+
+          <article class="card preview">
+            <div class="preview-art">
+              <div class="browser-bar"><span></span><span></span><span></span></div>
+              <div class="mock-line"></div>
+              <div class="mock-line mid"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-panel"><span></span><span></span></div>
+            </div>
+            <div class="caption"><b>版本說明</b> - 列出適用版本、更新日期與已知限制。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap">
+        <div class="download">
+          <h2>下載 Final Cut Pro 中文化</h2>
+          <p class="sub">下載公開分享用 zip，解壓縮後雙擊 <code>FinalCut_Pro_TC_OneClick.command</code>。工具會從這台 Mac 已安裝的 Final Cut Pro 讀取官方簡中語系並產生繁中語系包。</p>
+          <div class="cta" style="justify-content:center">
+            <a class="btn btn-primary" href="https://raw.githubusercontent.com/855xpyd5jw-hub/final-cut-pro-traditional-chinese/main/downloads/FinalCut_Pro_TC_Public.zip">下載公開 zip</a>
+            <a class="btn btn-ghost" href="https://github.com/855xpyd5jw-hub/final-cut-pro-traditional-chinese" target="_blank" rel="noopener">查看 GitHub</a>
+            <a class="btn btn-ghost" href="#start">查看安裝步驟</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>三步安裝</h2>
+          <p class="sub">建議先閱讀說明，再依照自己的 Final Cut Pro 版本操作。</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <p>下載 <code>FinalCut_Pro_TC_Public.zip</code> 並解壓縮，確認 Final Cut Pro 已經完全關閉。</p>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <p>雙擊 <code>FinalCut_Pro_TC_OneClick.command</code>，依照畫面提示輸入 Mac 登入密碼並等待完成。</p>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <p>重新開啟 Final Cut Pro。既有語系會備份到 <code>~/Movies/FinalCut_Pro_TC_Backups/</code>。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>安全與提醒</h2>
+          <p class="sub">中文化會修改應用程式資源，建議保留備份並理解風險。</p>
+        </div>
+
+        <div class="card trust-card">
+          <p><b>不散布原廠語系檔：</b>公開 zip 不包含 <code>zh_CN.lproj</code>、<code>zh_TW.lproj</code>、<code>dist</code> 或任何已轉換完成的 Apple 語系檔。</p>
+          <p><b>權限提醒：</b>若 macOS 顯示 <code>Operation not permitted</code>，請到「系統設定」->「隱私權與安全性」->「完整磁碟存取權」，允許 Terminal 存取。若有「App Management / App 管理」，也請允許 Terminal 修改 App。</p>
+          <p><b>非官方專案：</b>此工具不是 Apple 官方產品；Final Cut Pro 與相關商標皆屬 Apple Inc. 所有。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Final Cut Pro 繁體中文化 - 非官方繁體中文語言資源
+    </div>
+  </footer>
+</body>
+</html>
